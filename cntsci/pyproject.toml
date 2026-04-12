@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cntsci-app"
+version = "1.0.0"
+description = "Application Bureau CNTSCI - Gestion Matériel, Automobile et Personnel"
+authors = [
+    {name = "M. SESS Eddy", email = "eddy@cntsci.ci"}
+]
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "Propriétaire - CNTSCI 2025"}
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: End Users/Desktop",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: MacOS :: MacOS X",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Office/Business",
+]
+dependencies = [
+    "PyQt5>=5.15.0",
+    "psycopg2-binary>=2.9.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "black>=22.0.0",
+    "flake8>=4.0.0",
+]
+
+[project.scripts]
+cntsci = "cntsci_app.main:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["cntsci_app*", "cntsci_app.core*", "cntsci_app.modules*", "cntsci_app.ui*", "cntsci_app.utils*"]
