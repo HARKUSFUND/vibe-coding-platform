@@ -1,32 +1,62 @@
-"""SQLAlchemy ORM models for IGORS database."""
-
-from .user import User
-from .donneur import DonneurModel
+"""
+Export des modèles ORM IGORS.
+Conforme architecture CDC CNTSCI
+"""
+from .user import User as UserModel
+from .donneur import DonneurModel, TypePieceEnum, SexeEnum
 from .patient import PatientModel
-from .don import DonModel, TubeModel, TypePSLModel
-from .poche import PocheModel, QualificationBiologique
-from .examen import ExamenModel, GroupeExamensModel, GroupeExamenAssoc
-from .resultat import ResultatModel, HistoriqueResultatModel
-
-# Import other models as they are created
-# from .prescription import PrescriptionModel
-# from .automate import AutomateModel
-# from .qualite import CQIModel, EEQModel, CAPAModel, NonConformiteModel
-# from .prescripteur import PrescripteurModel
-# from .audit import AuditLogModel
+from .don import DonModel, TypePSLModel, StatutDonEnum
+from .poche import PocheSangModel, StatutQualificationEnum
+from .examen import ExamenModel, CategorieEnum
+from .resultat import ResultatModel, StatutValidationEnum, FlagEnum
+from .prescription import PrescripteurModel, PrescriptionModel, ExamenPrescritModel
+from .automate import (
+    AutomateModel,
+    AutomateExamenMappingModel,
+    AutomateLogModel,
+    WorklistQueueModel
+)
+from .audit import AuditLogModel, SessionLogModel, AccesDonneesLogModel
 
 __all__ = [
-    "User",
+    # Utilisateurs et sécurité
+    "UserModel",
+    
+    # Donneurs
     "DonneurModel",
+    "TypePieceEnum",
+    "SexeEnum",
+    
+    # Patients
     "PatientModel",
+    
+    # Dons et PSL
     "DonModel",
-    "TubeModel",
     "TypePSLModel",
-    "PocheModel",
-    "QualificationBiologique",
+    "StatutDonEnum",
+    "PocheSangModel",
+    "StatutQualificationEnum",
+    
+    # Examens et résultats
     "ExamenModel",
-    "GroupeExamensModel",
-    "GroupeExamenAssoc",
+    "CategorieEnum",
     "ResultatModel",
-    "HistoriqueResultatModel",
+    "StatutValidationEnum",
+    "FlagEnum",
+    
+    # Prescriptions
+    "PrescripteurModel",
+    "PrescriptionModel",
+    "ExamenPrescritModel",
+    
+    # Automates
+    "AutomateModel",
+    "AutomateExamenMappingModel",
+    "AutomateLogModel",
+    "WorklistQueueModel",
+    
+    # Audit
+    "AuditLogModel",
+    "SessionLogModel",
+    "AccesDonneesLogModel",
 ]
